@@ -8,7 +8,7 @@ ENV DB_PASSWORD=${DB_PASSWORD}
 
 WORKDIR /app
 
-COPY ./requirements ./
+COPY requirements requirements
 RUN pip install -r requirements/requirements.txt
 
 COPY . .
