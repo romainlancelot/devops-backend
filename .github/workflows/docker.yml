@@ -26,5 +26,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{secrets.DOCKERHUB_USERNAME}}/devops-frontend:${{github.sha}}
-            ${{secrets.DOCKERHUB_USERNAME}}/devops-frontend:latest
+            ${{secrets.DOCKERHUB_USERNAME}}/devops-backend:${{github.sha}}
+            ${{secrets.DOCKERHUB_USERNAME}}/devops-backend:latest
