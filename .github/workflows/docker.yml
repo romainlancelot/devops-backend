@@ -50,6 +50,9 @@ jobs:
         run: pip install -r requirements/requirements.txt
       - name: Run tests
         run: python manage.py test
+        env:
+          POSTGRES_HOST: postgres
+          POSTGRES_PORT: 5432
 
   push_to_registry:
     name: Push docker image to hub
