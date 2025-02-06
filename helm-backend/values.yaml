@@ -1,6 +1,7 @@
 backend:
   deployment:
-    image: romainlancelot/devops-backend:latest
+    image: romainlancelot/devops-backend
+    imageTag: latest
     port: 8000
   httproute:
     hostname: backend-borg.jbienvenu.fr
