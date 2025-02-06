@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
-  namespace: borg
+  namespace: {{.Release.Namespace}}
 spec:
   replicas: 1
   selector:
@@ -15,9 +15,9 @@ spec:
     spec:
       containers:
         - name: backend
-          image: romainlancelot/devops-backend:latest
+          image: {{.Values.backend.deployment.image}}
           ports:
-            - containerPort: 8000
+            - containerPort: {{.Values.backend.deployment.port}}
           env:
             - name: DB_HOST
               value: postgresql-service.borg

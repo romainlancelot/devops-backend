@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgresql
-  namespace: borg
+  namespace: {{.Release.Namespace}}
   labels:
     app: database
 spec:
@@ -17,9 +17,9 @@ spec:
     spec:
       containers:
         - name: postgresql
-          image: postgres:17.2
+          image: {{.Values.postgresql.deployment.image}}
           ports:
-            - containerPort: 5432
+            - containerPort: {{.Values.postgresql.deployment.port}}
           envFrom:
             - secretRef:
                 name: postgresql-secrets

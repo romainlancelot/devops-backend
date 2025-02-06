@@ -1,0 +1,21 @@
+backend:
+  deployment:
+    image: romainlancelot/devops-backend:latest
+    port: 8000
+  httproute:
+    hostname: backend-borg.jbienvenu.fr
+  service:
+    name: backend-service
+    port: 8000
+
+postgresql:
+  deployment:
+    image: postgres:17.2
+    port: 5432
+  service:
+    name: postgresql-service
+    port: 5432
+  config:
+    postgresqlUsername: your_db_user
+    postgresqlPassword: your_db_password
+    postgresqlDatabase: your_db_name
