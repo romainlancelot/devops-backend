@@ -83,6 +83,7 @@ jobs:
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/devops-backend:${{ github.sha }}
             ${{ secrets.DOCKERHUB_USERNAME }}/devops-backend:latest
+    if: ${{ github.event_name != 'pull_request' }}
 
   helm_deploy:
     name: Deploy to Kubernetes
@@ -108,6 +109,7 @@ jobs:
             --set postgresql.deployment.postgresqlPassword=${{ secrets.DB_PASSWORD }} \
             --set postgresql.deployment.postgresqlDatabase=${{ vars.DB_NAME }} \
             ${{ vars.HELM_CHART }} ./${{ vars.HELM_CHART }}
+    if: ${{ github.event_name != 'pull_request' }}
 
   healthcheck:
     name: Healthcheck
@@ -122,3 +124,4 @@ jobs:
           max-attempts: 3
           retry-delay: 30s
           retry-all: false
+    if: ${{ github.event_name != 'pull_request' }}
