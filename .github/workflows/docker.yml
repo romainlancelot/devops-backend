@@ -120,5 +120,5 @@ jobs:
           url: ${{ vars.HEALTHCHECK_ROUTE }}
           follow-redirect: false
           max-attempts: 3
-          retry-delay: 5s
+          retry-delay: 30s
           retry-all: false
