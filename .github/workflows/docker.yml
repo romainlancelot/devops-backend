@@ -1,5 +1,9 @@
 name: Build and Push Docker Image to Docker Hub
 
+permissions:
+  contents: write
+  pull_requests: write
+
 on:
   push:
     branches:
