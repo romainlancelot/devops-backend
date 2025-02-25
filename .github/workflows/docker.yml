@@ -103,3 +103,17 @@ jobs:
             --set postgresql.deployment.postgresqlPassword=${{ secrets.DB_PASSWORD }} \
             --set postgresql.deployment.postgresqlDatabase=${{ vars.DB_NAME }} \
             ${{ vars.HELM_CHART }} ./${{ vars.HELM_CHART }}
+
+  healthcheck:
+    name: Healthcheck
+    runs-on: ubuntu-latest
+    needs: helm_deploy
+    steps:
+      - name: Check the deployed service URL
+        uses: jtalk/url-health-check-action@v4
+        with:
+          url: ${{ vars.HEALTHCHECK_ROUTE }}
+          follow-redirect: false
+          max-attempts: 3
+          retry-delay: 5s
+          retry-all: false
