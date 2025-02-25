@@ -60,7 +60,7 @@ jobs:
       - name: Coverage
         uses: orgoro/coverage@v3.2
         with:
-          coverage_file: coverage.xml
+          coverageFile: coverage.xml
           token: ${{ secrets.GITHUB_TOKEN }}
 
   push_to_registry:
