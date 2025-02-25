@@ -50,13 +50,18 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements/requirements.txt
       - name: Run tests
-        run: python manage.py test
+        run: coverage run manage.py test && coverage xml
         env:
           DB_HOST: localhost
           DB_NAME: ${{ vars.DB_NAME }}
           DB_USER: ${{ vars.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_PORT: ${{ vars.DB_PORT }}
+      - name: Coverage
+        uses: orgoro/coverage@v3.2
+        with:
+          coverage_file: coverage.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   push_to_registry:
     name: Push docker image to hub
